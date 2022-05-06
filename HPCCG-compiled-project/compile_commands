@@ -1,0 +1,11 @@
+x=$1
+
+clang++ -O$x -emit-llvm -S *.cpp
+
+llvm-link -S -o hpccg.ll main.ll generate_matrix.ll read_HPC_row.ll dump_matlab_matrix.ll HPCCG.ll mytimer.ll waxpby.ll exchange_externals.ll HPC_sparsemv.ll ddot.ll
+
+mv hpccg.ll temp_IR
+
+rm *.ll
+
+mv temp_IR hpccg.ll

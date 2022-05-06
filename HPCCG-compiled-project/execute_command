@@ -1,0 +1,5 @@
+clang++ hpccg.ll -o hpccg
+
+./hpccg 64 64 64
+
+rm hpccg
